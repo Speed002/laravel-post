@@ -8,11 +8,15 @@ use App\Models\Post;
 class PostController extends Controller
 {
     public function __construct(){
-        $this->middleware(['auth']);
+        
     }
 
     public function index(){
-        $posts = Post::paginate(5);
+        // Eager loading | 
+        $posts = Post::with('user', 'likes')->paginate(5);
+        
+        // No eager loading
+        // $posts = Post::paginate(5);
         return view('posts.index', ['posts' => $posts]);
     }
 
@@ -23,6 +27,11 @@ class PostController extends Controller
         $request->user()->posts()->create([
             'body' => $request->body
         ]);
+        return back();
+    }
+
+    public function destroy(Post $post){
+        $post->delete();
         return back();
     }
 }
