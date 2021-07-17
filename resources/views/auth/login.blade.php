@@ -18,6 +18,14 @@
                     <label for="password" class="sr-only">Password</label>
                     <input type="password" name="password" placeholder="password" class="bg-gray-100 border-2 w-full p-4 rounded-lg @error('password') border-red-500 @enderror" value="">
                 </div>
+
+                <div>
+                   <div class="flex items-center mb-2">
+                        <input type="checkbox" name="remember" class="mr-2">
+                        <label for="remember">Remember me</label>
+                    </div>
+                </div>
+
                 <div>
                     <button type="submit" class="bg-blue-500 text-white px-4 py-3 rounded font-medium w-full">Login</button>
                 </div>
